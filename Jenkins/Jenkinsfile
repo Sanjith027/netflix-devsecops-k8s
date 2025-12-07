@@ -108,10 +108,10 @@ pipeline{
                 script {
                     dir('Kubernetes') {
                         withKubeConfig(credentialsId: 'k8s') {
-                            sh 'kubectl apply -f deployment.yml'
-                            sh 'kubectl apply -f service.yml'
-                            sh 'kubectl get svc'
-                            sh 'kubectl get all'
+                            sh 'kubectl apply --validate=false --insecure-skip-tls-verify -f deployment.yml'
+                            sh 'kubectl apply --validate=false --insecure-skip-tls-verify -f service.yml'
+                            sh 'kubectl get svc --insecure-skip-tls-verify'
+                            sh 'kubectl get all --insecure-skip-tls-verify'                          
                         }
                     }
                 }
