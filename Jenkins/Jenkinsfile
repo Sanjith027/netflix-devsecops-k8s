@@ -109,7 +109,9 @@ pipeline{
                     dir('Kubernetes') {
                         withKubeConfig(credentialsId: 'k8s') {
                             sh 'kubectl apply -f deployment.yml'
-                            sh 'kubectl apply -f service.yml'                                                 
+                            sh 'kubectl apply -f service.yml'
+                            sh 'kubectl get svc'
+                            sh 'kubectl get all'
                         }
                     }
                 }
